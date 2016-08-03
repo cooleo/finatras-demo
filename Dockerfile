@@ -20,6 +20,7 @@ RUN \
   sbt sbtVersion
 
 # Define working directory
+
 WORKDIR /finatras-demo
 
 EXPOSE 9990 8888
