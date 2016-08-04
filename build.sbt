@@ -1,3 +1,7 @@
+import sbt.Keys.{artifactPath, libraryDependencies, mainClass, managedClasspath, name, organization, packageBin, resolvers, version}
+
+
+
 name := "finatra-example"
 organization := "br.eng.rafaelsouza"
 version := "1.0"
@@ -38,3 +42,36 @@ libraryDependencies ++= Seq(
   "org.mockito" % "mockito-core" % "1.9.5" % "test",
   "org.scalatest" %% "scalatest" % "2.2.3" % "test",
   "org.specs2" %% "specs2" % "2.3.12" % "test")
+
+
+enablePlugins(DockerPlugin)
+
+dockerfile in docker := {
+  val jarFile = Keys.`package`.in(Compile, packageBin).value
+  val classpath = (managedClasspath in Compile).value
+  val mainclass = mainClass.in(Compile, packageBin).value.get
+  val libs = "/app/libs"
+  val jarTarget = "/app/" + jarFile.name
+
+  new Dockerfile {
+    // Use a base image that contain Java
+    from("java")
+    // Expose port 8080
+    expose(8980)
+
+    // Copy all dependencies to 'libs' in the staging directory
+    classpath.files.foreach { depFile =>
+      val target = file(libs) / depFile.name
+      stageFile(depFile, target)
+    }
+    // Add the libs dir from the
+    addRaw(libs, libs)
+
+    // Add the generated jar file
+    add(jarFile, jarTarget)
+    // The classpath is the 'libs' dir and the produced jar file
+    val classpathString = s"$libs/*:$jarTarget"
+    // Set the entry point to start the application using the main class
+    cmd("java", "-cp", classpathString, mainclass)
+  }
+}
