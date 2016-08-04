@@ -38,7 +38,7 @@ libraryDependencies ++= Seq(
   "com.twitter" %% "inject-app" % versions.finatra % "test" classifier "tests",
   "com.twitter" %% "inject-core" % versions.finatra % "test" classifier "tests",
   "com.twitter" %% "inject-modules" % versions.finatra % "test" classifier "tests",
-
+  "sbt-docker"
   "org.mockito" % "mockito-core" % "1.9.5" % "test",
   "org.scalatest" %% "scalatest" % "2.2.3" % "test",
   "org.specs2" %% "specs2" % "2.3.12" % "test")
