@@ -16,7 +16,7 @@ lazy val versions = new {
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
-  "Twitter Maven" at "https://maven.twttr.com"
+  "Twitter Maven" at "https://maven.twittr.com"
 )
 
 libraryDependencies ++= Seq(
