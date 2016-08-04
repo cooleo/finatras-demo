@@ -56,8 +56,8 @@ dockerfile in docker := {
   new Dockerfile {
     // Use a base image that contain Java
     from("java")
-    // Expose port 8080
-    expose(8980)
+    // Expose port 9990
+    expose(9990)
 
     // Copy all dependencies to 'libs' in the staging directory
     classpath.files.foreach { depFile =>
