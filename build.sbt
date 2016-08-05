@@ -2,8 +2,8 @@ import sbt.Keys.{artifactPath, libraryDependencies, mainClass, managedClasspath,
 
 
 
-name := "finatra-example"
-organization := "br.eng.rafaelsouza"
+name := "finatras-demo"
+organization := "coole.co.finatra"
 version := "1.0"
 scalaVersion := "2.11.8"
 parallelExecution in ThisBuild := false

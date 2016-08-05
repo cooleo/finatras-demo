@@ -1,4 +1,4 @@
-package br.eng.rafaelsouza
+package coole.co.finatra
 
 import com.twitter.finagle.http.Request
 import com.twitter.finatra.http.routing.HttpRouter

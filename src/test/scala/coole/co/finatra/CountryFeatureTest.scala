@@ -1,4 +1,4 @@
-package br.eng.rafaelsouza
+package coole.co.finatra
 
 import com.google.common.net.MediaType
 import com.twitter.finatra.http.{EmbeddedHttpServer, request}
